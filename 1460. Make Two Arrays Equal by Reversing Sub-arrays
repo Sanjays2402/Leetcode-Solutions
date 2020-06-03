@@ -1,0 +1,17 @@
+class Solution {
+public:
+    bool canBeEqual(vector<int>& target, vector<int>& arr) {
+        
+        map<int,int> mp;
+        for(int i: arr)
+            mp[i]++;
+        
+        for(int i: target)
+        {
+            if(!mp[i])
+                return false;
+            mp[i]--;
+        }
+        return true;
+    }
+};
