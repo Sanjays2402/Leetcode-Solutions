@@ -1,0 +1,20 @@
+class Solution {
+public:
+    string reverseOnlyLetters(string S) {
+        int start=0, end=S.length()-1;
+
+        while(start < end)
+        {
+            if(isalpha(S[start]) && isalpha(S[end]))
+            {
+                swap(S[start++],S[end--]);
+            }
+            else if(!isalpha(S[start]))
+                start++;
+            else if(!isalpha(S[end]))
+                end--;
+        }
+        
+        return S;
+    }
+};
