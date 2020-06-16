@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int countNegatives(vector<vector<int>>& grid) {
+        int m=grid.size(),n=grid[0].size();
+        int sum=0,i=0,j,prev=n-1;
+        for(i=0 ; i<m ; i++)
+        {
+            for(j=prev ; j>=0 ; j--)
+            {
+                if(gid[i][j]>=0)
+                {
+                    prev=j+1;
+                    sum += 
+                }
+            }
+        }
+        return sum;
+    }
+};
