@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int trailingZeroes(int n) {
+        
+        long long int count=0,pow=5;
+        while( (n/pow) >0)
+        {
+            count += n/pow;
+            pow *= 5;
+        }
+        return count;
+    }
+};
