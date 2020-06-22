@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int repeatedNTimes(vector<int>& A) {
+        set<int> st;
+        for(int i:A)
+        {
+            if(st.find(i)!=st.end())
+                return i;
+            st.insert(i);
+        }
+        return 0;
+    }
+};
