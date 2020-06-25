@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int uniqueMorseRepresentations(vector<string>& words) {
+        
+        string list[26]={".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+
+        unordered_set<string> result;
+        for(string i:words)
+        {
+            string word="";
+            for(char j:i)
+            {
+                word += list[j-'a'];
+            }
+            result.insert(word);
+        }
+        
+        return result.size();
+    }
+};
