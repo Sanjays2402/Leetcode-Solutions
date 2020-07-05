@@ -1,0 +1,55 @@
+class Solution {
+public:
+    string reformat(string s) {
+        
+        int alp=0,num=0;
+        vector<char> a,b;
+        string result="";
+        for(char i: s)
+        {
+            if(isalpha(i))
+            {
+                alp++;
+                a.push_back(i);
+            }
+            else if(isdigit(i))
+            {
+                num++;
+                b.push_back(i);
+            }
+        }
+        if(abs(alp-num) > 1)
+            return "";
+        
+        while(!a.empty() || !b.empty())
+        {
+            if(alp>num)
+            {
+                if(!a.empty())
+                {
+                    result += a.back();
+                    a.pop_back();
+                }
+                if(!b.empty())
+                {
+                    result += b.back();
+                    b.pop_back();
+                }
+            }
+            else
+            {
+                if(!b.empty())
+                {
+                    result += b.back();
+                    b.pop_back();
+                }
+                if(!a.empty())
+                {
+                    result += a.back();
+                    a.pop_back();
+                }
+            }
+        }
+        return result;
+    }
+};
