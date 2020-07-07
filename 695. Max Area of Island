@@ -1,0 +1,37 @@
+class Solution {
+public:
+    
+    int maxisland(vector<vector<int>>& grid, int x, int y)
+    {
+        if(x<0 || y<0 || x>=grid.size() || y>=grid[0].size() || !grid[x][y])
+            return 0;
+        
+        // int res=1;
+        // res=res + maxisland(grid, x+1, y);
+        // res=res + maxisland(grid, x, y+1);
+        // res=res + maxisland(grid, x-1, y);
+        // res=res + maxisland(grid, x, y-1);
+        
+        grid[x][y]=0;
+        return 1 + maxisland(grid, x+1, y) + maxisland(grid, x, y+1) +                              maxisland(grid, x-1, y) + maxisland(grid, x, y-1);
+    }
+    int maxAreaOfIsland(vector<vector<int>>& grid) {
+        
+        int m=grid.size();
+        int n=grid[0].size();
+        int maxi=0;
+        for(int i=0; i<m; i++)
+        {
+            for(int j=0; j<n; j++)
+            {
+                if(grid[i][j]==1)
+                {
+                    int val=maxisland(grid, i, j);
+                    maxi=max(maxi, val);
+                }
+            }
+        }
+        
+        return maxi;
+    }
+};
