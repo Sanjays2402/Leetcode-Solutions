@@ -3,7 +3,7 @@ public:
     vector<int> twoSum(vector<int>& nums, int target) {
         
         unordered_map<int,int> mappy;
-        long int i;
+        int i;
         for(i = 0; i < nums.size(); i++)
         {
             if(mappy.find(nums[i]) != mappy.end())
