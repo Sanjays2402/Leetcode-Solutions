@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int numIdenticalPairs(vector<int>& nums) {
+        
+        int count=0;
+        map<int, int> hash;
+        for(int i: nums)
+        {
+            if(hash[i]>0)
+                count+=hash[i];
+            hash[i]++;
+        }
+        
+        return count;
+    }
+};
