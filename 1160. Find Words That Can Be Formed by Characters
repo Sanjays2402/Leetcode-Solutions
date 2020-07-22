@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int countCharacters(vector<string>& words, string chars) {
+        
+        int count=0,flag;
+        map<char,int> hash;
+        for(char i: chars)
+            hash[i]++;
+        
+        for(string i: words)
+        {
+            map<char,int> comp;
+            flag=1;
+            for(char j: i)
+            {
+                comp[j]++;
+                if(comp[j]>hash[j])
+                {
+                    flag=0;
+                    break;
+                }
+            }
+            if(flag)
+                count+=i.length();
+        }
+        
+        return count;
+    }
+};
