@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int fib(int N) {
+        
+        if(N==0)
+            return 0;
+        
+        vector<int> a={0,1};
+        for(int i=2; i<=N; i++)
+        {
+            a.push_back(a[i-1]+a[i-2]);
+        }
+        
+        return a.back();
+    }
+};
