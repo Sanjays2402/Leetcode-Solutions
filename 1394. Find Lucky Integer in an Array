@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int findLucky(vector<int>& arr) {
+        
+        sort(arr.begin(), arr.end());
+        map<int,int> hash;
+        int val=-1;
+        
+        for(int i: arr)
+            hash[i]++;
+        
+        for(int i: arr)
+            if(hash[i] == i)
+                val=i;
+        
+        return val;
+        
+    }
+};
