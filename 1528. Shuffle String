@@ -2,19 +2,10 @@ class Solution {
 public:
     string restoreString(string s, vector<int>& indices) {
         
-        vector<pair<int,char>> arr;
+        string result = s;
         for(int i=0; i<s.length(); i++)
-        {
-            arr.push_back(make_pair(indices[i], s[i]));
-        }
-        
-        sort(arr.begin(), arr.end());
-        string result="";
-        
-        for(int i=0; i<s.length(); i++)
-            result += arr[i].second;
+            result[indices[i]] = s[i];
         
         return result;
-        
     }
 };
