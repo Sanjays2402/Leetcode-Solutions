@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<int> shortestToChar(string S, char C) {
+        
+        vector<int> result;
+        for(int i=0; i<S.length(); i++)
+        {
+            int ptr1=i, ptr2=i;
+            while(ptr1>0 && S[ptr1]!=C)
+                ptr1--;
+            if(S[ptr1]!=C)  
+                ptr1=INT_MAX;
+
+            while(ptr2<S.length()-1 && S[ptr2]!=C)
+                ptr2++;
+            if(S[ptr2]!=C)
+                ptr2=INT_MAX;
+            
+            result.push_back(min(abs(i-ptr1), abs(ptr2-i)));
+        }
+        
+        return result;
+        
+    }
+};
