@@ -1,0 +1,17 @@
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        
+        map<char, int> hash;
+        for(char a: magazine)
+            hash[a]++;
+        for(char a: ransomNote)
+        {
+            hash[a]--;
+            if(hash[a]<0)
+                return false;
+        }
+        
+        return true;
+    }
+};
