@@ -1,0 +1,32 @@
+class Solution {
+public:
+    string sortString(string s) {
+        
+        string result="";
+        map<char, int> hash;
+        for(char i: s)
+            hash[i]++;
+        while(true)
+        {
+            for(char i='a'; i<='z'; i++)
+            {
+                if(hash[i] != 0)
+                {
+                    result.push_back(i);
+                    hash[i]--;
+                }
+            }
+            for(char i='z'; i>='a'; i--)
+            {
+                if(hash[i] != 0)
+                {
+                    result.push_back(i);
+                    hash[i]--;
+                }
+            }
+            if(result.size() == s.size())
+                break;
+        }
+        return result;
+    }
+};
