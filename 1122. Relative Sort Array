@@ -1,0 +1,32 @@
+class Solution {
+public:
+    vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
+        
+        vector<int> res, temp;
+        map<int, int> hash;
+        for(int i: arr1)
+            hash[i]++;
+        
+        for(int j: arr2)
+        {
+           while(hash[j])
+           {
+               res.push_back(j);
+               hash[j]--;
+           }
+        }
+        
+        for(int i: arr1)
+        {
+            if(hash[i]!=0)
+            {
+                temp.push_back(i);
+            }
+        }
+        sort(temp.begin(), temp.end());
+        for(int i: temp)
+            res.push_back(i);
+        
+        return res;
+    }
+};
