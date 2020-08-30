@@ -6,7 +6,6 @@ public:
         map<int, int> hash;
         for(int i: arr1)
             hash[i]++;
-        
         for(int j: arr2)
         {
            while(hash[j])
