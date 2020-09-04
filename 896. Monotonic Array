@@ -1,0 +1,17 @@
+class Solution {
+public:
+    bool isMonotonic(vector<int>& A) {
+        
+        int asc=0, des=0;
+        for(int i=0; i<A.size()-1; i++)
+        {
+            if(A[i]==A[i+1])
+                asc++,des++;
+            else if(A[i]<A[i+1])
+                asc++;
+            else if(A[i]>A[i+1])
+                des++;
+        }
+        return des==A.size()-1 || asc==A.size()-1;
+    }
+};
