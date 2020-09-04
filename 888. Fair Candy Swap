@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> fairCandySwap(vector<int>& A, vector<int>& B) {
+        
+        int sum1=0, sum2=0;
+        map<int, int> hash;
+        for(int i: A)
+            sum1 += i;
+        for(int i: B)
+        {
+            sum2 += i;
+            hash[i]=1;
+        }
+        int delta = (sum2-sum1)/2;
+        
+        for(int i: A)
+            if(hash[delta+i])
+                return {i,delta+i};
+        return {0,0};
+    }
+};
