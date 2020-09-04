@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int findPairs(vector<int>& nums, int k) {
+        
+        if(k<0)
+            return 0;
+        
+        map<int, int> mp;
+        for(int i: nums)
+            mp[i]++;
+        int count=0;
+        set<int> hash(nums.begin(), nums.end());
+        for(auto i: hash)
+        {
+            if(k!=0 && hash.find(i+k)!=hash.end())
+                count++;
+            else if(k==0 && mp[i]>1)
+            {
+                count++;
+                mp[i]=0;
+            }
+        }
+        return count;
+    }
+};
