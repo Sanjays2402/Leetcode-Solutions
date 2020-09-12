@@ -1,0 +1,34 @@
+class Solution {
+public:
+    
+    set<vector<int>> res;
+    
+    void comb(vector<int> cand, int target, vector<int> candi, int pos)
+    {
+        if(target == 0)
+        {
+            res.insert(cand);
+            return;
+        }
+        if(target<0)
+            return;
+
+        for(int i=pos; i<candi.size(); i++)
+        {
+            cand.push_back(candi[i]);
+            comb(cand, target-candi[i], candi, i+1);
+            cand.pop_back();
+        }
+    }
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+        
+        vector<vector<int>> result;
+        vector<int> cand;
+        sort(candidates.begin(), candidates.end());
+        comb(cand, target, candidates, 0);
+        for(auto i: res)
+            result.push_back(i);
+        return result;
+        
+    }
+};
