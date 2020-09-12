@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<vector<int>> res;
+    void comb(vector<int> com, int n, int k, int start)
+    {
+        if(com.size() == k)
+            res.push_back(com);
+        
+        for(int i=start; i<=n; i++)
+        {
+            com.push_back(i);
+            comb(com, n, k, i+1);
+            com.pop_back();
+        }
+    }
+    vector<vector<int>> combine(int n, int k) {
+        
+        vector<int> com;
+        comb(com, n, k, 1);
+        return res;
+        
+    }
+};
