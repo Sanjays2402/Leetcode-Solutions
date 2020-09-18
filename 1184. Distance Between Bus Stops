@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int distanceBetweenBusStops(vector<int>& distance, int start, int destination) {
+        
+        int dis1=0, dis2=distance[start];
+        for(int i=start-1; ;i--)
+        {
+            if(i<0)
+                i=distance.size()-1;
+            dis1+=distance[i];
+            if(i==destination)
+                break;
+        }
+        for(int i=start+1; ;i++)
+        {
+            if(i>=distance.size())
+                i=0;
+            if(i==destination)
+                break;
+            dis2+=distance[i];
+        }
+        //cout<<dis1<<" "<<dis2;
+        return min(dis1, dis2);
+    }
+};
