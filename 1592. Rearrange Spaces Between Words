@@ -1,0 +1,41 @@
+class Solution {
+public:
+    string reorderSpaces(string text) {
+        
+        int space=0, n=text.length(), i=0, word=0;
+        for(char i: text)
+            if(i==' ')
+                space++;
+        
+        string res="";
+        vector<string> a;
+        while(i < n)
+        {
+            string s="";
+            int flag=0;
+            while(i<n && text[i]==' ')
+                i++;
+            
+            while(i<n && text[i]!=' ')
+            {
+                s+=text[i];
+                flag=1, i++;
+            }
+            
+            if(s.size())
+                a.push_back(s);
+            if(flag)
+                word++;
+        }
+        if(word==1)
+            return a[0] + string(space, ' ');
+        int btw = space / (word-1);
+        int last = space % (word-1);
+        
+        for(int i=0; i<a.size(); i++)
+        {
+            res += a[i]+string(btw,' ');
+        }
+        return res.substr(0, res.size()-btw) + string(last, ' ');
+    }
+};
