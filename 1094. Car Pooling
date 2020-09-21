@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool carPooling(vector<vector<int>>& trips, int capacity) {
+        
+        vector<pair<int, int>> car;
+        for(int i=0; i<trips.size(); i++)
+        {
+            car.push_back({trips[i][1], trips[i][0]});
+            car.push_back({trips[i][2], -trips[i][0]});
+        }
+        
+        sort(car.begin(), car.end());
+        
+        int count=0;
+        for(auto i: car)
+        {
+            count += i.second;
+            if(count > capacity)
+                return false;
+        }
+        return true;
+    }
+};
