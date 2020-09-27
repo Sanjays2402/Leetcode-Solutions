@@ -6,6 +6,7 @@ public:
         {
             mp[i]++;
         }
+        
         return min ( { mp['b'] , mp['a'] , mp['l']/2 , mp['o']/2 ,mp['n'] } ) ;
     }
 };
