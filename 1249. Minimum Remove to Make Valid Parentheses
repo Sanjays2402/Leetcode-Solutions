@@ -1,0 +1,45 @@
+class Solution {
+public:
+    string minRemoveToMakeValid(string s) {
+        
+        int n=s.size(), k=0;
+        string res="";
+        vector<int> vec;
+        stack<char> stk;
+        stack<int> pos;
+        for(int i=0; i<n; i++)
+        {
+            if(s[i]=='(')
+            {
+                stk.push(s[i]);
+                pos.push(i);
+            }
+            else if(stk.size()!=0 && s[i]==')')
+            {
+                vec.push_back(pos.top());
+                vec.push_back(i);
+                stk.pop();
+                pos.pop();
+            }
+        }
+        
+        if(vec.size())
+            sort(vec.begin(), vec.end());
+        
+        for(int i=0; i<n; i++)
+        {
+            if(isalpha(s[i]))
+                res += s[i];
+            else
+            {
+                if(vec.size() && i == vec[k])
+                {
+                    res += s[i];
+                    if(k<vec.size()-1)
+                        k++;
+                }
+            }
+        }
+        return res;
+    }
+};
