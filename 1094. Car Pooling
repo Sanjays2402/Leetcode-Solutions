@@ -8,7 +8,7 @@ public:
             car.push_back({trips[i][1], trips[i][0]});
             car.push_back({trips[i][2], -trips[i][0]});
         }
-        
+       
         sort(car.begin(), car.end());
     
         int count=0;
