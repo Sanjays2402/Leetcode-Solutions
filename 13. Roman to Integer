@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int romanToInt(string s) {
+        
+        unordered_map<char,int> val;
+        val['I']=1;
+        val['V']=5;
+        val['X']=10;
+        val['L']=50;
+        val['C']=100;
+        val['D']=500;
+        val['M']=1000;
+        int res=val[s.back()], i=s.size()-2;
+        
+        while( i >= 0 )
+        {
+            if( val[s[i]] < val[s[i+1]] )
+                res -= val[s[i]];
+            else
+                res += val[s[i]];
+            i--;
+        }
+        
+        return res;
+    }
+};
