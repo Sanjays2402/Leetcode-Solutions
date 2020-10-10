@@ -1,0 +1,21 @@
+class Solution {
+public:
+    unordered_map<int, int> hash;
+    int helper(vector<int> cost, int pos)
+    {
+        if(pos == 0 || pos == 1)
+            return hash[pos]=cost[pos];
+        
+        if(hash[pos] != 0)
+            return hash[pos];
+        
+        hash[pos] = cost[pos] + min(helper(cost, pos-1), helper(cost, pos-2));
+        
+        return hash[pos];
+    }
+    
+    int minCostClimbingStairs(vector<int>& cost) {
+        
+        return min(helper(cost, cost.size()-1), helper(cost, cost.size()-2));
+    }
+};
