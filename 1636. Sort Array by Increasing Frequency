@@ -1,0 +1,32 @@
+class Solution {
+public:
+    static bool comp(const pair<int, int> &a, const pair<int, int> &b)
+    {
+        if(a.second == b.second)
+            return a.first > b.first;
+        
+        return a.second < b.second;    
+    }
+    vector<int> frequencySort(vector<int>& nums) {
+        
+        unordered_map<int, int> hash;
+        for(int i: nums)
+            hash[i]++;
+        
+        vector<pair<int, int>> p;
+        for(auto it: hash)
+            p.push_back({it.first, it.second});
+        
+        sort(p.begin(), p.end(), comp);
+        
+        vector<int> res;
+        for(auto it: p)
+        {
+            int ct = it.second;
+            while(ct--)
+                res.push_back(it.first);
+        }
+        
+        return res;
+    }
+};
