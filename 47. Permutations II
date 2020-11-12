@@ -1,0 +1,33 @@
+class Solution {
+public:
+    vector<vector<int>> res;
+    set<vector<int>> st;
+    void backtrace(vector<int> nums, int pos)
+    {
+        if(pos >= nums.size())
+        {
+            st.insert(nums);
+            return ;
+        }
+        
+        for(int i=pos; i<nums.size(); i++)
+        {
+            swap(nums[pos], nums[i]);
+            backtrace(nums, pos+1);
+            swap(nums[pos], nums[i]);
+        }
+    }
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        
+        vector<int> temp;
+        if(nums.size()==0)
+            return res;
+        
+        backtrace(nums, 0);
+        
+        for(auto it: st)
+            res.push_back(it);
+        
+        return res;
+    }
+};
