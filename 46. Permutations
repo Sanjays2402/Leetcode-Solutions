@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<vector<int>> result;
+    void backtrace(vector<int> nums, int pos)
+    {
+        if(pos >= nums.size())
+        {
+            result.push_back(nums);
+            return ;
+        }
+        
+        for(int i=pos; i<nums.size(); i++)
+        {
+            swap(nums[pos], nums[i]);
+            backtrace(nums, pos+1);
+            swap(nums[pos], nums[i]);
+        }
+    }
+    vector<vector<int>> permute(vector<int>& nums) {
+        backtrace(nums, 0);
+        return result;
+    }
+};
