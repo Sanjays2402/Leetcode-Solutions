@@ -1,0 +1,32 @@
+class Solution {
+public:
+    static bool comp(const pair<string, int>& a, const pair<string, int>& b)
+    {
+        if(a.second == b.second)
+            return a.first < b.first;
+        return a.second > b.second;
+    }
+    vector<string> topKFrequent(vector<string>& words, int k) {
+        
+        int cnt=1;
+        vector<string> result;
+        map<string, int> hash;
+        for(string it: words)
+            hash[it]++;
+        
+        vector<pair<string, int>> v;
+        copy(hash.begin(), hash.end(), back_inserter(v));
+        
+        sort(v.begin(), v.end(), comp);
+        
+        for(auto it: v)
+        {
+            if(cnt>k)
+                break;
+            result.push_back(it.first);
+            cnt++;
+        }
+        
+        return result;
+    }
+};
