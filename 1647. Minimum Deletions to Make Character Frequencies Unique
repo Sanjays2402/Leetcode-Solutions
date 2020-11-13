@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int minDeletions(string s) {
+        
+        unordered_map<int, int> filled;
+        unordered_map<char, int> freq;
+        int count = 0;
+        for(char i: s)
+            freq[i]++;
+        
+        for(auto it: freq)
+        {
+            char ch = it.first;
+            if(filled[freq[ch]] == 1)
+            {
+                while(freq[ch]>0 && filled[freq[ch]] == 1)
+                {
+                    count ++;
+                    freq[ch] --;
+                }
+            }
+            filled[freq[ch]] = 1;
+        }
+        return count;
+    }
+};
