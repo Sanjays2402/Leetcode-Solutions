@@ -1,0 +1,42 @@
+class Solution {
+public:
+    bool closeStrings(string word1, string word2) {
+        
+        if(word1==word2)
+            return true;
+        
+        if(word1.size() != word2.size())
+            return false;
+        
+        bool flag1 = true, flag2 = true;
+        unordered_map<char, int> hash1, hash2, count1, count2;
+        for(char i: word1)
+            hash1[i]++;
+        for(char i: word2)
+            hash2[i]++;
+        
+        for(auto it: hash1)
+            count1[it.second]++;
+        
+        for(auto it: hash2)
+            count2[it.second]++;
+        
+        for(auto it: count1)
+        {
+            if(count1[it.first] != count2[it.first])
+            {
+                flag1 = false;
+            }
+        }
+        for(char it: word1)
+            if(hash2[it]==0)
+                flag2 = false;
+        
+        for(char it: word2)
+            if(hash1[it]==0)
+                flag2 = false;
+        if(flag1==0 || flag2==0)
+            return false;
+        return true;
+    }
+};
