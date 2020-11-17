@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int numSub(string s) {
+        
+        long long int res = 0, i=0, n=s.size();
+        while(i < n)
+        {
+            long long int count = 0;
+            while(i<n && s[i] == '1')
+                count++, i++;
+            res += (count*(count+1))/2;
+            i++;
+        }
+        return res % 1000000007;
+    }
+};
