@@ -1,0 +1,41 @@
+class Solution {
+public:
+    vector<string> res;
+    vector<string> restoreIpAddresses(string s) {
+        
+        set<string> st;
+        int n = s.size();
+        for(int i=1; i<=3; i++)
+        {
+            for(int j=i+1; j<=i+3; j++)
+            {
+                for(int k=j+1; k<=j+3; k++)
+                {
+                    string temp = "";
+                    if(k>=n  || j>=n || i>=n)
+                        break;
+                    string a=s.substr(0, i);
+                    string b=s.substr(i, j-i);
+                    string c=s.substr(j, k-j);
+                    string d=s.substr(k, n-k);
+                    if( (a[0]=='0' && a.size()>1) || (b[0]=='0' && b.size()>1) || (c[0]=='0' && c.size()>1) || (d[0]=='0' && d.size()>1))
+                        continue;
+                    
+                    if(a.size()>3 || b.size()>3 || c.size()>3 || d.size()>3)
+                        continue;
+                    
+                    int a1=stoll(a), b1=stoll(b), c1=stoll(c), d1=stoll(d);
+                    if(a1>=0 && a1<=255 && b1>=0 && b1<=255 && c1>=0 && c1<=255 && d1>=0 && d1<=255)
+                    {
+                        cout<<a<<" "<<b<<" "<<c<<" "<<d<<endl;
+                        temp = to_string(a1)+'.'+to_string(b1)+'.'+to_string(c1)+'.'+to_string(d1);
+                        st.insert(temp);
+                    }
+                }
+            }
+        }
+        for(auto it: st)
+            res.push_back(it);
+        return res;
+    }
+};
