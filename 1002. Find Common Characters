@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<string> commonChars(vector<string>& A) {
+        
+        vector<string> result;
+        vector<int> b(26, 101);
+        for(string i: A)
+        {
+            vector<int> a(26, 0);
+            for(char j: i)
+                a[j-'a']++;
+            for(int j=0; j<26; j++)
+                b[j] = min(b[j], a[j]);
+        }
+        for(int i=0; i<26; i++)
+        {
+            while(b[i] && b[i]!=101)
+            {
+                result.push_back(string(1, i + 'a'));
+                b[i]--;
+            }
+        }
+        return result;
+    }
+};
