@@ -1,0 +1,46 @@
+class Solution {
+public:
+    int findShortestSubArray(vector<int>& nums) {
+        
+        int maxi = INT_MIN, res = INT_MAX;
+        unordered_map<int, int> hash;
+        vector<int> max_ele;
+        for(int i: nums)
+            hash[i]++;
+        
+        for(auto it: hash)
+        {
+            maxi = max(maxi, it.second);
+        }
+        for(auto it: hash)
+        {
+            if(it.second == maxi)
+                max_ele.push_back(it.first);
+        }
+        
+        for(int i: max_ele)
+        {
+            int first, last;
+            for(int j=0; j<nums.size(); j++)
+            {
+                if(nums[j] == i)
+                {
+                    first = j;
+                    break;
+                }
+            }
+            for(int j=nums.size()-1; j>=0; j--)
+            {
+                if(nums[j] == i)
+                {
+                    last= j;
+                    break;
+                }
+            }
+            
+            res = min(res, last - first + 1);
+        }
+        
+        return res;
+    }
+};
