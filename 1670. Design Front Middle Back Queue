@@ -1,0 +1,57 @@
+class FrontMiddleBackQueue {
+public:
+    vector<int> a;
+    FrontMiddleBackQueue() {
+        
+    }
+    
+    void pushFront(int val) {
+        a.insert(a.begin(), val);
+    }
+    
+    void pushMiddle(int val) {
+        a.insert(a.begin() + a.size()/2, val);
+    }
+    
+    void pushBack(int val) {
+        a.push_back(val);
+    }
+    
+    int popFront() {
+        if(a.empty())
+            return -1;
+        int val = a.front();
+        a.erase(a.begin());
+        return val;
+    }
+    
+    int popMiddle() {
+        if(a.empty())
+            return -1;
+        int mid = 0;
+        if(a.size()%2==0)
+            mid = -1;
+        int val = a[a.size()/2 + mid];
+        a.erase(a.begin()+ a.size()/2 + mid);
+        return val;
+    }
+    
+    int popBack() {
+        if(a.empty())
+            return -1;
+        int val = a.back();
+        a.erase(a.end()-1);
+        return val;
+    }
+};
+
+/**
+ * Your FrontMiddleBackQueue object will be instantiated and called as such:
+ * FrontMiddleBackQueue* obj = new FrontMiddleBackQueue();
+ * obj->pushFront(val);
+ * obj->pushMiddle(val);
+ * obj->pushBack(val);
+ * int param_4 = obj->popFront();
+ * int param_5 = obj->popMiddle();
+ * int param_6 = obj->popBack();
+ */
