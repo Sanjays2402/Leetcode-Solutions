@@ -11,32 +11,33 @@
  */
 class Solution {
 public:
-    vector<int> largestValues(TreeNode* root) {
+    map<int, int> hash;
+    void dfs(TreeNode* root, int level)
+    {
+        if(root == NULL)
+            return ;
         
+        if(hash.find(level) == hash.end())
+            hash[level] = root->val;
+        else
+            hash[level] = max(hash[level], root->val);
+        
+        if(root->left)
+            dfs(root->left, level+1);
+        if(root->right)
+            dfs(root->right, level+1);
+    }
+    
+    vector<int> largestValues(TreeNode* root) {
         vector<int> res;
         if(root == NULL)
-           return res;
+            return res;
         
-        queue<TreeNode*> q;
-        q.push(root);
-        
-        while(q.size())
-        {
-            int size = q.size();
-            int maxi = INT_MIN;
-            for(int i=0; i<size; i++)
-            {
-                TreeNode* pre = q.front();
-                q.pop();
-                maxi = max(maxi, pre->val);
-                if(pre->left)
-                    q.push(pre->left);
-                if(pre->right)
-                    q.push(pre->right);
-            }
-            res.push_back(maxi);
-        }
+        dfs(root, 0);
+        for(auto it: hash)
+            res.push_back(it.second);
         
         return res;
+        
     }
 };
