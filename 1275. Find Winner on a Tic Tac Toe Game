@@ -1,0 +1,27 @@
+class Solution {
+public:
+    string tictactoe(vector<vector<int>>& moves) {
+        unordered_map<int, int> vert, hori, dia, mindia;
+        unordered_map<int, int> vert1, hori1, dia1, mindia1;
+        
+        int player=0;
+        for(int k=0; k<moves.size(); k++)
+        {
+            int i=moves[k][0], j=moves[k][1];
+            if(player % 2 == 0)
+            {
+                if(++vert[i]==3 || ++hori[j]==3 || ++dia[i+j]==3 || ++mindia[i-j]==3)
+                    return "A";
+            }
+            else
+            {
+                if(++vert1[i]==3 || ++hori1[j]==3 || ++dia1[i+j]==3 || ++mindia1[i-j]==3)
+                    return "B";
+            }
+            player++;
+        }
+        if(moves.size() == 9)
+            return "Draw";
+        return "Pending";
+    }
+};
