@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int maxOperations(vector<int>& nums, int k) {
+        
+        if(nums.size() == 0)
+            return 0;
+        
+        int count = 0;
+        unordered_map<int, int> hash;
+        for(int i: nums)
+        {
+            int rem = k - i;
+            if(hash[rem])
+            {
+                count ++;
+                hash[rem]--;
+            }
+            else
+                hash[i]++;
+        }
+        
+        return count;
+        
+    }
+};
