@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int countConsistentStrings(string allowed, vector<string>& words) {
+        
+        int count = 0;
+        unordered_map<char, int> hash;
+        for(char i: allowed)
+            hash[i] = 1;
+        
+        for(string i: words)
+        {
+            int flag = 1;
+            unordered_map<char, int> check;
+            for(char j: i)
+            {
+                check[j] = 1;
+                if(check[j] > hash[j])
+                {
+                    flag = 0;
+                    break;
+                }
+            }
+            if(flag)
+                count ++;
+        }
+        return count;
+    }
+};
