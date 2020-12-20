@@ -1,0 +1,30 @@
+class Solution {
+public:
+    string reformatNumber(string number) {
+        
+        string s = "", res = "";
+        for(char i: number)
+            if(isdigit(i))
+                s += i;
+        
+        int len = s.size(), i=0;
+        while(len > 4)
+        {
+            res += string(s.begin()+i, s.begin()+i+3);
+            res += "-";
+            i+=3, len-=3;
+        }
+        
+        if(len == 2 || len == 3)
+            res += string(s.begin()+i, s.end());
+        else if(len == 4)
+        {
+            res += string(s.begin()+i, s.begin()+i+2);
+            res += "-";
+            i+=2;
+            res += string(s.begin()+i, s.begin()+i+2);
+        }
+        
+        return res;
+    }
+};
