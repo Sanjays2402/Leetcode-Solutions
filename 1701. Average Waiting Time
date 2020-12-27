@@ -1,0 +1,25 @@
+class Solution {
+public:
+    double averageWaitingTime(vector<vector<int>>& c) {
+        
+        int end = c[0][1] + c[0][0];
+        double val = c[0][1];
+        
+        for(int i=1; i<c.size(); i++)
+        {
+            if(c[i][0] < end)
+            {
+                val += end - c[i][0];
+                end = end + c[i][1];
+                val += c[i][1];
+            }
+            else
+            {
+                val += c[i][1];
+                end = c[i][1] + c[i][0];
+            }
+        }
+        
+        return val / c.size();
+    }
+};
