@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<vector<int>> matrixReshape(vector<vector<int>>& nums, int r, int c) {
+        
+        if(r * c != nums.size() * nums[0].size())
+            return nums;
+        vector<int> temp;
+        vector<vector<int>> res;
+        for(auto i: nums)
+            for(int j: i)
+                temp.push_back(j);
+        
+        for(int i=0; i<temp.size(); i+=c)
+        {
+            vector<int> s;
+            for(int j=0; j<c; j++)
+                s.push_back(temp[i+j]);
+            res.push_back(s);
+        }
+        
+        return res;
+    }
+};
