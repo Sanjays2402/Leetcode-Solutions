@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int tupleSameProduct(vector<int>& n) {
+        
+        sort(n.begin(), n.end());
+        int res = 0;
+        unordered_map<int, int> hash;
+        for(int i=0; i<n.size(); i++)
+        {
+            for(int j=i+1; j<n.size(); j++)
+            {
+                if(hash[n[i] * n[j]])
+                    res += 8 * hash[n[i] * n[j]];
+                hash[n[i] * n[j]]++;
+            }
+        }
+        return res;
+    }
+};
