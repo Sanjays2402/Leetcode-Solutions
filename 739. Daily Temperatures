@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<int> dailyTemperatures(vector<int>& T)
+    {
+        unordered_map<int, int> hash;
+        stack<int> st;
+        for(int i=0; i<T.size(); i++)
+        {
+            while(st.size() && T[i] > T[st.top()])
+            {
+                hash[st.top()] = i;
+                st.pop();
+            }
+            st.push(i);
+        }
+        for(int i=0; i<T.size(); i++)
+        {
+            if(hash[i])
+                T[i] = hash[i] - i;
+            else
+                T[i] = 0;
+        }
+        return T;
+    }
+};
