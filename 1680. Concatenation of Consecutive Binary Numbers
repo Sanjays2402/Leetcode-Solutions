@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int concatenatedBinary(int n) {
+        
+        long res = 0, k = 1, mod = 1000000007;
+        for(int i=n; i>=1; i--)
+        {
+            int t = i;
+            while(t)
+            {
+                k %= mod;
+                res = (res + (t%2 * k) % mod) % mod;
+                k*=2;
+                t = t >> 1;
+            }
+        }
+        return res % mod;
+    }
+};
