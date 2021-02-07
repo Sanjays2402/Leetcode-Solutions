@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int sumOfUnique(vector<int>& nums) {
+        
+        int sum = 0;
+        unordered_map<int,int> hash;
+        for(int i: nums)
+            hash[i]++;
+        
+        for(auto it: hash)
+        {
+            if(it.second == 1)
+                sum += it.first;
+        }
+        
+        return sum;
+    }
+};
