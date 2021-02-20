@@ -1,0 +1,30 @@
+class Solution {
+public:
+    string longestNiceSubstring(string s) {
+        
+        string res = "";
+        for(int i=0; i<s.size(); i++)
+        {
+            
+            for(int j=i+1; j<s.size(); j++)
+            {
+                int flag = 1;
+                vector<int> up(26, 0), lo(26, 0);
+                string p = s.substr(i, j-i+1);
+                for(char k: p)
+                {
+                    if(islower(k))
+                        lo[k-'a'] = 1;
+                    else
+                        up[k-'A'] = 1;
+                }
+                for(int k=0; k<26; k++)
+                    if(up[k] != lo[k])
+                        flag = 0;
+                if(flag && res.size() < p.size())
+                    res = p;
+            }
+        }
+        return res;
+    }
+};
