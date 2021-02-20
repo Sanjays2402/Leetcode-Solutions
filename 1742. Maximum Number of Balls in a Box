@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int countBalls(int lowLimit, int highLimit) {
+        
+        int res = INT_MIN;
+        unordered_map<int, int> hash;
+        for(int i=lowLimit; i<=highLimit; i++)
+        {
+            int t = i, sum = 0;
+            while(t)
+            {
+                sum += t%10;
+                t /= 10;
+            }
+            hash[sum]++;
+            res = max(res, hash[sum]);
+        }
+        return res;
+    }
+};
