@@ -1,0 +1,16 @@
+class Solution {
+public:
+    bool halvesAreAlike(string s) {
+        
+        int i=0, j=s.size()-1, a=0, b=0;
+        while(i < j)
+        {
+            if(strchr("aeiouAEIOU", s[i]))
+                a++;
+            if(strchr("aeiouAEIUO", s[j]))
+                b++;
+            i++, j--;
+        }
+        return a == b;
+    }
+};
