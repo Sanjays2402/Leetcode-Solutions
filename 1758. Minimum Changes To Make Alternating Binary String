@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int minOperations(string s) {
+        
+        string a = s;
+        int res1 = 0, res2 = 0;
+        if(s[0] == '1')
+            res1 ++;
+        if(a[0] == '0')
+            res2 ++;
+        
+        s[0] = '0';
+        a[0] = '1';
+        for(int i=1; i<s.size(); i++)
+        {
+            if(s[i] == s[i-1])
+            {
+                if(s[i] == '0')
+                    s[i] = '1';
+                else
+                    s[i] = '0';
+                res1++;
+            }
+            if(a[i] == a[i-1])
+            {
+                if(a[i] == '0')
+                    a[i] = '1';
+                else
+                    a[i] = '0';
+                res2++;
+            }
+        }
+        cout<<a;
+        return min(res1, res2);
+    }
+};
