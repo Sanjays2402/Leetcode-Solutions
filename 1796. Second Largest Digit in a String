@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int secondHighest(string s) {
+        int maxi = INT_MIN, smaxi = INT_MIN;
+        for(char i: s)
+        {
+            if(!isdigit(i))
+                continue;
+            if(i-'0' > maxi)
+            {
+                smaxi = maxi;
+                maxi = i-'0';
+            }
+            else if(i-'0' > smaxi && i-'0' != maxi)
+                smaxi = i-'0';
+        }
+        return smaxi == INT_MIN ? -1 : smaxi;
+    }
+};
