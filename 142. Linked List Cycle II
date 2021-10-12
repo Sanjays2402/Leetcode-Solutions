@@ -15,6 +15,7 @@ public:
         
         int flag = false;
         ListNode *slow = head, *fast = head;
+        
         while(fast->next != NULL && fast->next->next != NULL)
         {
             slow = slow -> next;
@@ -28,7 +29,10 @@ public:
         }
         if(!flag || fast == NULL)
             return NULL;
-        
+            
+        if(!flag || fast == NULL)
+            return NULL;
+            
         slow = head;
         while(slow != fast)
         {
