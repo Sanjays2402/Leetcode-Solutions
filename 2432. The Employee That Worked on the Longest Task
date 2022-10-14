@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int hardestWorker(int n, vector<vector<int>>& logs) {
+        
+        int curmax = 0, result = 0, pre = 0;
+        for(int i = 0 ; i < logs.size() ; i++)
+        {
+            if(curmax < logs[i][1] - pre)
+            {
+                curmax = logs[i][1] - pre;
+                result = logs[i][0];
+            }
+            else if(curmax == logs[i][1] - pre)
+            {
+                result = min( result, logs[i][0]);
+            }
+            pre = logs[i][1];
+        }
+        
+        return result;
+    }
+};
