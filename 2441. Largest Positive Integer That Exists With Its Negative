@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int findMaxK(vector<int>& nums) {
+        
+        int maxi = INT_MIN;
+        unordered_map<int, int> count;
+        for(int i: nums)
+            if(i < 0)
+                count[i] = 1;
+        
+        for(int i: nums)
+            if(i > maxi && count[-i])
+                maxi = i;
+        
+        if(maxi == INT_MIN)
+            return -1;
+        return maxi;
+    }
+};
