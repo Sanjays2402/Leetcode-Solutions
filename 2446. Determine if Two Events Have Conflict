@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int time(string s)
+    {
+        return stoi(s.substr(0,2)) * 60 + stoi(s.substr(3,2));
+    }
+    bool haveConflict(vector<string>& event1, vector<string>& event2) {
+        
+        int start1 = time(event1[0]);
+        int end1 = time(event1[1]);
+        int start2 = time(event2[0]);
+        int end2 = time(event2[1]);
+        
+        if((start1 >= start2 && start1 <= end2) || (start2 >= start1 && start2 <= end1))
+            return true;
+        return false;
+    }
+};
