@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int distinctAverages(vector<int>& nums) {
+        unordered_set<float> val;
+        sort(nums.begin(), nums.end());
+        int i = 0, j = nums.size()-1;
+        while(i < j)
+        {
+            val.insert((float)(nums[i++]+nums[j--])/2);
+            //cout<<(float)(nums[i++]+nums[j--])/2<<endl;
+        }
+        cout<<endl;
+        return val.size();
+    }
+};
