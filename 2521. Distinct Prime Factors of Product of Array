@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int distinctPrimeFactors(vector<int>& nums) {
+        
+        vector<int> fact = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31};
+        set<int> prime;
+        for(int it: nums)
+        {
+            for(int j: fact)
+            {
+                while(it % j == 0)
+                {
+                    prime.insert(j);
+                    it /= j;
+                }
+            }
+            if(it != 1)
+                prime.insert(it);
+        }
+
+        return prime.size();
+    }
+};
