@@ -1,0 +1,22 @@
+class Solution {
+public:
+    string capitalizeTitle(string title) {
+        string result;
+        int  i=0;
+        while(i < title.size())
+        {
+            string temp;
+            while(i < title.size() && title[i] != ' ')
+            {
+                title[i] = tolower(title[i]);
+                temp.push_back(title[i++]);
+            }
+            if(temp.size() > 2)
+                temp.front() = toupper(temp.front());
+            result = result + temp + " ";
+            i++;
+        }
+        result.pop_back();
+        return result;
+    }
+};
