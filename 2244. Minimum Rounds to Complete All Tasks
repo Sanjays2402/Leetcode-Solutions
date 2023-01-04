@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int minimumRounds(vector<int>& tasks) {
+        
+        int result = 0;
+        unordered_map<int, int> hash;
+        for(int i: tasks)
+        {
+            hash[i]++;
+        }
+        for(auto it: hash)
+        {
+            if(it.second == 1)
+                return -1;
+            result += it.second / 3;
+            if(it.second % 3 != 0)
+                result ++;
+        }
+        return result;
+    }
+};
