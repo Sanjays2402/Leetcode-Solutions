@@ -1,0 +1,22 @@
+class Solution {
+public:
+    string categorizeBox(int l, int w, int h, int m) {
+        
+        string result;
+        int count = 0;
+        if(l >= 10000 || w >= 10000 || h >= 10000 || (unsigned long int)l*w*h >= 1000000000)
+            count += 10;
+        if(m >= 100)
+            count += 20;
+        if(count == 30)
+            result = "Both";
+        if(count == 0)
+            result = "Neither";
+        if(count == 10)
+            result = "Bulky";
+        if(count == 20)
+            result = "Heavy";
+        
+        return result;
+    }
+};
