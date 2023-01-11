@@ -1,0 +1,20 @@
+class Solution {
+public:
+    long long maxKelements(vector<int>& nums, int k) {
+        
+        long long int result = 0;
+        priority_queue<int> heap;
+        for(int i: nums)
+            heap.push(i);
+        while(k--)
+        {
+            int val = heap.top();
+            result += val;
+            heap.pop();
+            val = val + 2;
+            val /= 3;
+            heap.push(val);
+        }
+        return result;
+    }
+};
